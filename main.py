@@ -41,8 +41,9 @@ def help(update, context):
                               '/game - 🤓Yeni oyun başladmaq\n' +
                               '/game - 👨🏻‍💻Aparıcı olmaq\n' +
                               '/rating - ⚕️Qrup üzrə reytinq', reply_to_message_id=True)
-
-
+                              '/qrating - ⚕️Qruplar üzrə reytinq'. reply_to_message_id=True)
+                               
+        
 def button(update, context):
     user_id = update.callback_query.from_user.id
     chat_id = update.callback_query.message.chat_id
@@ -66,10 +67,10 @@ def button(update, context):
 def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
-        addme = InlineKeyboardButton(text="🤓 Məni Gurupnuza Əlavə Edin", url="https://t.me/karabakhgamebot?startgroup=a")
+        addme = InlineKeyboardButton(text="🤓 Məni Gurupnuza Əlavə Edin", url="https://t.me/kafkazcrobot?startgroup=a")
         sohbet = InlineKeyboardButton(text="⚕️ Rəsmi Kanal", url="https://t.me/RiyaddBlog")
-        oyun = InlineKeyboardButton(text="🌐 Söhbət Gurupmuz", url="https://t.me/KarabakhTeamm")
-        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/Thagiyevvvv")
+        oyun = InlineKeyboardButton(text="🌐 Söhbət Gurupmuz", url="https://t.me/azeqafqaz2021")
+        admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/azzardi")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -127,7 +128,7 @@ def command_master(update: Update, context):
                                   reply_to_message_id=True)
         return
 
-    logger.info('Got command /game,'
+    logger.info('Got command /qgame,'
                 'chat_id={},'
                 'user="{}"({}),'
                 'timedelta={}'.format(chat_id,
@@ -145,7 +146,7 @@ def command_show_word(update, context):
     game = get_or_create_game(chat_id)
     word = game.get_word(user_id)
 
-    logger.info('Got command /qraytinq, ' 
+    logger.info('Got command /reytinq, ' 
                 'chat_id={}, '
                 'user="{}"({}),'
                 'is_user_master={},'
@@ -166,7 +167,7 @@ def command_change_word(update, context):
 
     word = game.change_word(user_id)
 
-    logger.info('Got command /qraytinq,'
+    logger.info('Got command /reytinq,'
                 'chat_id={},'
                 'user="{}"({}),'
                 'is_user_master={},'
@@ -186,7 +187,7 @@ def command_rating(update, context):
 
     rating_str = game.get_str_rating()
 
-    logger.info('Got command /rating,'
+    logger.info('Got command /ratinq,'
                 'chat_id={},'
                 'rating={}'.format(update.message.chat.id,
                                    rating_str))
@@ -211,7 +212,7 @@ def is_word_answered(update, context):
 
         set_master(update, context)
 
-    logger.info('Guessing word,'
+    logger.info('Got command /qreytinq,'
                 'chad_id={},'
                 'user="{}"({}),'
                 'is_master={},'
@@ -234,9 +235,9 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("game", command_start))
-    dp.add_handler(CommandHandler("game", command_master))
-    dp.add_handler(CommandHandler("ratinq", command_show_word))
-    dp.add_handler(CommandHandler("qratinq", command_change_word))
+    dp.add_handler(CommandHandler("qgame", command_master))
+    dp.add_handler(CommandHandler("reytinq", command_show_word))
+    dp.add_handler(CommandHandler("qreytinq", command_change_word))
     dp.add_handler(CommandHandler("rating", command_rating))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("start", command_start))
