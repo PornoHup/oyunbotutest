@@ -67,8 +67,8 @@ def command_start(update, context: CallbackContext):
     if update.effective_chat.type == "private":
         
         addme = InlineKeyboardButton(text="🤓 Məni Gurupnuza Əlavə Edin", url="https://t.me/karabakhgamebot?startgroup=a")
-        sohbet = InlineKeyboardButton(text="⚕️ Support", url="https://t.me/RiyaddBlog")
-        oyun = InlineKeyboardButton(text="🐈 Söhbət Gurupmuz", url="https://t.me/KarabakhTeamm")
+        sohbet = InlineKeyboardButton(text="⚕️ Rəsmi Kanal", url="https://t.me/RiyaddBlog")
+        oyun = InlineKeyboardButton(text="🌐 Söhbət Gurupmuz", url="https://t.me/KarabakhTeamm")
         admin = InlineKeyboardButton(text="👨🏻‍💻 Sahib", url="https://t.me/Thagiyevvvv")
 
         keyboard = [[addme],[sohbet],[oyun],[admin]]
@@ -145,7 +145,7 @@ def command_show_word(update, context):
     game = get_or_create_game(chat_id)
     word = game.get_word(user_id)
 
-    logger.info('Got command /qreytinq, ' 
+    logger.info('Got command /qraytinq, ' 
                 'chat_id={}, '
                 'user="{}"({}),'
                 'is_user_master={},'
@@ -166,7 +166,7 @@ def command_change_word(update, context):
 
     word = game.change_word(user_id)
 
-    logger.info('Got command /reytinq,'
+    logger.info('Got command /qraytinq,'
                 'chat_id={},'
                 'user="{}"({}),'
                 'is_user_master={},'
@@ -235,8 +235,8 @@ def main():
 
     dp.add_handler(CommandHandler("game", command_start))
     dp.add_handler(CommandHandler("game", command_master))
-    dp.add_handler(CommandHandler("retinq", command_show_word))
-    dp.add_handler(CommandHandler("qretinq", command_change_word))
+    dp.add_handler(CommandHandler("ratinq", command_show_word))
+    dp.add_handler(CommandHandler("qratinq", command_change_word))
     dp.add_handler(CommandHandler("rating", command_rating))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("start", command_start))
