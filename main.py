@@ -38,9 +38,9 @@ def setup_logger():
 
 def help(update, context):
     update.message.reply_text('Mövcud əmrlər:\n' +
-                              '/basla - 🤓Yeni oyun başladmaq\n' +
-                              '/master - 👨🏻‍💻Aparıcı olmaq\n' +
-                              '/rating - ⚕️Qrup üzrə reytinq', reply_to_message_id=True)
+                              '/game - 🤓Yeni oyun başladmaq\n' +
+                              '/qgame - 👨🏻‍💻Aparıcı olmaq\n' +
+                              '/reytinq - ⚕️Qrup üzrə reytinq', reply_to_message_id=True)
 
 
 def button(update, context):
